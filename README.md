@@ -17,7 +17,7 @@ Eg.  cd "Algorithms and Data Structures"
 
 Step 2: 
 
-Once you are successfully within the correct directory you can compile your program with the command -     cl ADS_Connect4.c 
+Once you are successfully within the correct directory you can compile your program with the command - cl ADS_Connect4.c 
 This should compile the program successfully allowing it to be run on your terminal.
 
 If you are having issues you may need to check make sure you have the correct Build Tools installed on your version of Visual Studio, this is relatively 
