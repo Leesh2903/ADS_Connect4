@@ -1,14 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
 //function prototypes for program to run methods correctly
 void initialise (char gameB[6][7]);
 void print_game (char gameB[6][7]);
 void player_turn (char gameB[6][7], char player);
+
+//====================================//
 int checkVerticalO (char gameB[6][7]);
 int checkVerticalX (char gameB[6][7]);
 int checkHorizonO (char gameB[6][7]);
 int checkHorizonX (char gameB[6][7]);
+int checkDiagonalX(char gameB[6][7]);
+int checkDiagonalO(char gameB[6][7]);
+//====================================//
+
 
 int main()
 {
@@ -28,8 +35,8 @@ int main()
         printf("Goodbye!");
         exit(0);
     }
-   
-    
+
+
     //declares variables for player 1, player 2, game board, turn and game
     //2d array is used to store the game board
     char gameB[6][7]; 
@@ -95,6 +102,7 @@ void print_game (char gameB[6][7])
 void player_turn (char gameB[6][7], char player)
 {
     int y, x, game_column, turn=0;
+    char exit_game;
 
     while(turn==0)
     {
@@ -151,6 +159,16 @@ void player_turn (char gameB[6][7], char player)
                     printf("\n\nCongratulations Player %c , you win ADS Connect 4!\n", player);
                     exit(0);
                 }
+                else if(checkDiagonalO(gameB)==1)
+                {
+                    printf("\n\nCongratulations Player %c , you win ADS Connect 4!\n", player);
+                    exit(0);
+                }
+                else if(checkDiagonalX(gameB)==1)
+                {
+                    printf("\n\nCongratulations Player %c , you win ADS Connect 4!\n", player);
+                    exit(0);
+                }
                 break;
             }
         }
@@ -160,7 +178,7 @@ void player_turn (char gameB[6][7], char player)
 //======================================================================================================================================//
 
 //VERTICAL O
-//used to check all possible win conditions, I understand this is a very inefficient way of checking my win condition and will discuss this further within my report
+//used to check all possible win conditions for vertical O, I understand this is an inefficient way of checking my win condition and will discuss this further within my report
 int checkVerticalO(char gameB[6][7])
 {
     if (gameB[0][0] == 'O' && gameB[1][0] == 'O' && gameB[2][0] == 'O' && gameB[3][0] == 'O' || gameB[1][0] == 'O' && gameB[2][0] == 'O' && gameB[3][0] == 'O' && gameB[4][0] == 'O' ||
@@ -183,7 +201,7 @@ int checkVerticalO(char gameB[6][7])
 //======================================================================================================================================//
 
 //VERTICAL X
-//used to check all possible win conditions, I understand this is a very inefficient way of checking my win condition and will discuss this further within my report
+//used to check all possible win conditions for vertical X, I understand this is an inefficient way of checking my win condition and will discuss this further within my report
 int checkVerticalX(char gameB[6][7])
 {
     if (gameB[0][0] == 'X' && gameB[1][0] == 'X' && gameB[2][0] == 'X' && gameB[3][0] == 'X' || gameB[1][0] == 'X' && gameB[2][0] == 'X' && gameB[3][0] == 'X' && gameB[4][0] == 'X' ||
@@ -206,7 +224,7 @@ int checkVerticalX(char gameB[6][7])
 //======================================================================================================================================//
 
 //HORIZONTAL O
-//used to check all possible win conditions, I understand this is a very inefficient way of checking my win condition and will discuss this further within my report
+//used to check all possible win conditions for horizontal O, I understand this is an inefficient way of checking my win condition and will discuss this further within my report
 int checkHorizonO(char gameB[6][7])
 {
      if (gameB[0][0] == 'O' && gameB[0][1] == 'O' && gameB[0][2] == 'O' && gameB[0][3] == 'O' || gameB[0][1] == 'O' && gameB[0][2] == 'O' && gameB[0][3] == 'O' && gameB[0][4] == 'O' ||
@@ -227,10 +245,10 @@ int checkHorizonO(char gameB[6][7])
     return 0;
 }
 
-//--------------------------------------------------------------------------------------------------------------------------------------------------
+//======================================================================================================================================//
 
 //HORIZONTAL X
-//used to check all possible win conditions, I understand this is a very inefficient way of checking my win condition and will discuss this further within my report
+//used to check all possible win conditions for horizontal X, I understand this is an inefficient way of checking my win condition and will discuss this further within my report
 int checkHorizonX(char gameB[6][7])
 {
      if (gameB[0][0] == 'X' && gameB[0][1] == 'X' && gameB[0][2] == 'X' && gameB[0][3] == 'X' || gameB[0][1] == 'X' && gameB[0][2] == 'X' && gameB[0][3] == 'X' && gameB[0][4] == 'X' ||
@@ -250,6 +268,68 @@ int checkHorizonX(char gameB[6][7])
     }
     return 0;
 }
+
+//======================================================================================================================================//
+
+//DIAGONAL X
+//used to check all possible win conditions, I understand this is an inefficient way of checking my win condition and will discuss this further within my report
+
+//diagonal 
+ int checkDiagonalX(char gameB[6][7]){
+    if (gameB[2][0] == 'X' && gameB[3][1] == 'X' && gameB[4][2] == 'X' && gameB[5][3] == 'X'|| gameB[1][0] == 'X' && gameB[2][1] == 'X' && gameB[3][2] == 'X' && gameB[4][3] == 'X'||
+    gameB[0][0] == 'X' && gameB[1][1] == 'X' && gameB[2][2] == 'X' && gameB[3][3] == 'X'|| gameB[0][1] == 'X' && gameB[1][2] == 'X' && gameB[2][3] == 'X' && gameB[3][4] == 'X'||
+    gameB[1][1] == 'X' && gameB[2][2] == 'X' && gameB[3][3] == 'X' && gameB[4][4] == 'X'|| gameB[2][1] == 'X' && gameB[3][2] == 'X' && gameB[4][3] == 'X' && gameB[5][4] == 'X'||
+    gameB[0][2] == 'X' && gameB[1][3] == 'X' && gameB[2][4] == 'X' && gameB[3][5] == 'X'|| gameB[1][2] == 'X' && gameB[2][3] == 'X' && gameB[3][4] == 'X' && gameB[4][5] == 'X'||
+    gameB[2][2] == 'X' && gameB[3][3] == 'X' && gameB[4][4] == 'X' && gameB[5][5] == 'X'|| gameB[0][3] == 'X' && gameB[1][4] == 'X' && gameB[2][5] == 'X' && gameB[3][6] == 'X'||
+    gameB[1][3] == 'X' && gameB[2][4] == 'X' && gameB[3][5] == 'X' && gameB[4][6] == 'X'|| gameB[2][3] == 'X' && gameB[3][4] == 'X' && gameB[4][5] == 'X' && gameB[5][6] == 'X')
+    {
+        return 1;
+    }
+//anti diagonal 
+    else if (gameB[3][0] == 'X' && gameB[2][1] == 'X' && gameB[1][2] == 'X' && gameB[0][3] == 'X'|| gameB[4][0] == 'X' && gameB[3][1] == 'X' && gameB[2][2] == 'X' && gameB[1][3] == 'X'||
+    gameB[3][1] == 'X' && gameB[2][2] == 'X' && gameB[1][3] == 'X' && gameB[0][4] == 'X'|| gameB[5][0] == 'X' && gameB[4][1] == 'X' && gameB[3][2] == 'X' && gameB[2][3] == 'X'||        
+    gameB[4][1] == 'X' && gameB[3][2] == 'X' && gameB[2][3] == 'X' && gameB[1][4] == 'X'|| gameB[3][2] == 'X' && gameB[2][2] == 'X' && gameB[1][4] == 'X' && gameB[0][5] == 'X'||
+    gameB[5][1] == 'X' && gameB[4][2] == 'X' && gameB[3][3] == 'X' && gameB[2][4] == 'X'|| gameB[4][2] == 'X' && gameB[3][3] == 'X' && gameB[2][4] == 'X' && gameB[1][5] == 'X'||
+    gameB[3][3] == 'X' && gameB[2][4] == 'X' && gameB[1][5] == 'X' && gameB[0][6] == 'X'|| gameB[5][2] == 'X' && gameB[4][3] == 'X' && gameB[3][4] == 'X' && gameB[2][5] == 'X'||
+    gameB[4][3] == 'X' && gameB[3][4] == 'X' && gameB[2][5] == 'X' && gameB[1][6] == 'X'|| gameB[5][3] == 'X' && gameB[4][4] == 'X' && gameB[3][5] == 'X' && gameB[2][6] == 'X')
+    {
+        return 1;
+    }
+    return 0;
+}
+
+//======================================================================================================================================//
+
+//DIAGONAL O
+//used to check all possible win conditions, I understand this is an inefficient way of checking my win condition and will discuss this further within my report
+
+//diagonal 
+int checkDiagonalO(char gameB[6][7]){
+    if (gameB[2][0] == 'O' && gameB[3][1] == 'O' && gameB[4][2] == 'O' && gameB[5][3] == 'O'|| gameB[1][0] == 'O' && gameB[2][1] == 'O' && gameB[3][2] == 'O' && gameB[4][3] == 'O'||
+    gameB[0][0] == 'O' && gameB[1][1] == 'O' && gameB[2][2] == 'O' && gameB[3][3] == 'O'|| gameB[0][1] == 'O' && gameB[1][2] == 'O' && gameB[2][3] == 'O' && gameB[3][4] == 'O'||
+    gameB[1][1] == 'O' && gameB[2][2] == 'O' && gameB[3][3] == 'O' && gameB[4][4] == 'O'|| gameB[2][1] == 'O' && gameB[3][2] == 'O' && gameB[4][3] == 'O' && gameB[5][4] == 'O'||
+    gameB[0][2] == 'O' && gameB[1][3] == 'O' && gameB[2][4] == 'O' && gameB[3][5] == 'O'|| gameB[1][2] == 'O' && gameB[2][3] == 'O' && gameB[3][4] == 'O' && gameB[4][5] == 'O'||
+    gameB[2][2] == 'O' && gameB[3][3] == 'O' && gameB[4][4] == 'O' && gameB[5][5] == 'O'|| gameB[0][3] == 'O' && gameB[1][4] == 'O' && gameB[2][5] == 'O' && gameB[3][6] == 'O'||
+    gameB[1][3] == 'O' && gameB[2][4] == 'O' && gameB[3][5] == 'O' && gameB[4][6] == 'O'|| gameB[2][3] == 'O' && gameB[3][4] == 'O' && gameB[4][5] == 'O' && gameB[5][6] == 'O')
+    {
+        return 1;
+    }
+//anti diagonal
+    else if (gameB[3][0] == 'O' && gameB[2][1] == 'O' && gameB[1][2] == 'O' && gameB[0][3] == 'O'|| gameB[4][0] == 'O' && gameB[3][1] == 'O' && gameB[2][2] == 'O' && gameB[1][3] == 'O'||
+    gameB[3][1] == 'O' && gameB[2][2] == 'O' && gameB[1][3] == 'O' && gameB[0][4] == 'O'|| gameB[5][0] == 'O' && gameB[4][1] == 'O' && gameB[3][2] == 'O' && gameB[2][3] == 'O'||        
+    gameB[4][1] == 'O' && gameB[3][2] == 'O' && gameB[2][3] == 'O' && gameB[1][4] == 'O'|| gameB[3][2] == 'O' && gameB[2][2] == 'O' && gameB[1][4] == 'O' && gameB[0][5] == 'O'||
+    gameB[5][1] == 'O' && gameB[4][2] == 'O' && gameB[3][3] == 'O' && gameB[2][4] == 'O'|| gameB[4][2] == 'O' && gameB[3][3] == 'O' && gameB[2][4] == 'O' && gameB[1][5] == 'O'||
+    gameB[3][3] == 'O' && gameB[2][4] == 'O' && gameB[1][5] == 'O' && gameB[0][6] == 'O'|| gameB[5][2] == 'O' && gameB[4][3] == 'O' && gameB[3][4] == 'O' && gameB[2][5] == 'O'||
+    gameB[4][3] == 'O' && gameB[3][4] == 'O' && gameB[2][5] == 'O' && gameB[1][6] == 'O'|| gameB[5][3] == 'O' && gameB[4][4] == 'O' && gameB[3][5] == 'O' && gameB[2][6] == 'O')
+    {
+        return 1;
+    }
+    return 0;
+}
+
+
+
+
 
 //sources which helped give me ideas to create final program
 
