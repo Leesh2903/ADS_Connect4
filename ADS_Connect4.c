@@ -102,7 +102,6 @@ void print_game (char gameB[6][7])
 void player_turn (char gameB[6][7], char player)
 {
     int y, x, game_column, turn=0;
-    char exit_game;
 
     while(turn==0)
     {
