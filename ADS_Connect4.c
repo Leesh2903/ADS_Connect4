@@ -87,15 +87,23 @@ void print_game (char gameB[6][7])
 {
     //declare variables i and j to be used to loop through 2d array (will loop to create a 7x6 game board)
     int x,y;
+
+    //top of game board
+    printf("---------------------");
     //loops through 2d array to create columns for game 
     for(y=5; y>=0; y--)
     {
         printf("\n");//Next line of the board
         for(x=0; x<7; x++)
         {
+            //printf("|") used to create visible columns on game board
+            printf("|");
             printf("%c" ,gameB[y][x]); //prints the game board for user
+            printf("|");
         }
     }
+    //bottom of game board
+    printf("\n---------------------");
 }
 
 //method used for players to take turns in game 
@@ -331,6 +339,7 @@ int checkDiagonalO(char gameB[6][7]){
 
 
 //sources which helped give me ideas to create final program
+
 
 
 //http://www.cplusplus.com/forum/beginner/102634/ 
