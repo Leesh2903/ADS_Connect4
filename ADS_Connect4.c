@@ -69,7 +69,7 @@ int main()
     //method used to initialise game board for game, 2d Array is used for the game board 
 void initialise (char gameB[6][7])
 {
-    //declare variables i and j to be used to loop through 2d array (will loop to create a 7x6 game board)
+    //declare variables x and y to be used to loop through 2d array (will loop to create a 7x6 game board)  (X and Y axis)
     int x,y; 
 
     //loops through 2d array to create columns for game
@@ -85,7 +85,7 @@ void initialise (char gameB[6][7])
 //method used to print the game board for users, 2d Array is used for the game board
 void print_game (char gameB[6][7])
 {
-    //declare variables i and j to be used to loop through 2d array (will loop to create a 7x6 game board)
+    //declare variables x and y to be used to loop through 2d array (will loop to create a 7x6 game board)  (X and Y axis)
     int x,y;
 
     //top of game board
@@ -109,6 +109,7 @@ void print_game (char gameB[6][7])
 //method used for players to take turns in game 
 void player_turn (char gameB[6][7], char player)
 {
+    //declare variables 
     int y, x, game_column, turn=0;
 
     while(turn==0)
