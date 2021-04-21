@@ -89,7 +89,7 @@ void print_game (char gameB[6][7])
     int x,y;
 
     //top of game board
-    printf("---------------------");
+    printf("---C-O-N-N-E-C-T-4---");
     //loops through 2d array to create columns for game 
     for(y=5; y>=0; y--)
     {
