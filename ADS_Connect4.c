@@ -348,3 +348,5 @@ int checkDiagonalO(char gameB[6][7]){
 //https://codereview.stackexchange.com/questions/27446/connect-four-game  
 
 //https://beginnersbook.com/2014/01/2d-arrays-in-c-example/?fbclid=IwAR2kPkY-lBQmLwaADITChQInyAr-TYw3IFhT4tY-9NjLjN3bAVAXmR7ze50
+
+//https://www.programiz.com/c-programming/c-multi-dimensional-arrays
